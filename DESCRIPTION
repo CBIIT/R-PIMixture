@@ -14,7 +14,7 @@ Author: Li C. Cheung [aut, cre],
         Qing Pan [aut],
         Hormuzd A. Katki [aut]
 Maintainer: Li C. Cheung <li.cheung@nih.gov>,
- Noorie Hyun <noorie.hyun@nih.gov>
+ Noorie Hyun <nhyun@mcw.edu>
 Description: This package fits Prevalence Incidence Mixture models to data for which the time to event is interval censored or
   for which the event is prevalent at the time zero but is only partially observed.  Such data often arises in medical screening 
   for asymptomatic disease or disease precursors, such as precancerous lesions.  In such data, 1) onset of incident disease occurs
