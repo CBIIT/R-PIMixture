@@ -3656,6 +3656,8 @@ PIMixture<-function(p.model,i.model,data,model="semi-parametric",reg.initials=NU
   design.mat <- model.matrix(attr(mf, "terms"), data=mf)
   n.beta<-ncol(design.mat)
 
+  ## newly labeling #04/22/2019
+  
   length.mf<-length(colnames(mf))
   if (length.mf>1){
     for(j in 2:length.mf){
