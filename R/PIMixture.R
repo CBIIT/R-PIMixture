@@ -1228,13 +1228,7 @@ ipw.lc.semipara<-function(samp.data,data,fml,fml2, n.beta, n.gamma, design.mat, 
   if (length.mf>1){
     for(j in 2:length.mf){
       if(is.factor(mf[,j])){
-        level.list<-levels(mf[,j])
-
-        for (k in 1:length(level.list)) {
-          colnames(design.mat)<-gsub(level.list[k],paste0("=",level.list[k]),colnames(design.mat),fixed=T)
-        }
-
-        remove(level.list)
+        colnames(design.mat)<-gsub(colnames(mf)[j],paste0(colnames(mf)[j],"="),colnames(design.mat),fixed=T)
       }
     } #for(j in 2:length.mf)
   }#if (length.mf>1)
@@ -1252,13 +1246,7 @@ ipw.lc.semipara<-function(samp.data,data,fml,fml2, n.beta, n.gamma, design.mat, 
     if (length.mf2>1){
       for(j in 2:length.mf2){
         if(is.factor(mf2[,j])){
-          level.list<-levels(mf2[,j])
-
-          for (k in 1:length(level.list)) {
-            colnames(xmat)<-gsub(level.list[k],paste0("=",level.list[k]),colnames(xmat),fixed=T)
-          }
-
-          remove(level.list)
+          colnames(xmat)<-gsub(colnames(mf2)[j],paste0(colnames(mf2)[j],"="),colnames(xmat),fixed=T)
         }
       } #for(j in 2:length.mf)
     }#if(length.mf2>1)
@@ -3672,14 +3660,9 @@ PIMixture<-function(p.model,i.model,data,model="semi-parametric",reg.initials=NU
   if (length.mf>1){
     for(j in 2:length.mf){
       if(is.factor(mf[,j])){
-        level.list<-levels(mf[,j])
-
-        for (k in 1:length(level.list)) {
-        colnames(design.mat)<-gsub(level.list[k],paste0("=",level.list[k]),colnames(design.mat),fixed=T)
+          colnames(design.mat)<-gsub(colnames(mf)[j],paste0(colnames(mf)[j],"="),colnames(design.mat),fixed=T)
         }
-        remove(level.list)
-      }
-    } #for(j in 2:length.mf)
+      }#for(j in 2:length.mf)
   }#if (length.mf>1)
   remove(length.mf)
 
@@ -3698,13 +3681,7 @@ PIMixture<-function(p.model,i.model,data,model="semi-parametric",reg.initials=NU
     if (length.mf2>1){
         for(j in 2:length.mf2){
           if(is.factor(mf2[,j])){
-            level.list<-levels(mf2[,j])
-
-            for (k in 1:length(level.list)) {
-              colnames(xmat)<-gsub(level.list[k],paste0("=",level.list[k]),colnames(xmat),fixed=T)
-            }
-
-            remove(level.list)
+            colnames(xmat)<-gsub(colnames(mf2)[j],paste0(colnames(mf2)[j],"="),colnames(xmat),fixed=T)
           }
         } #for(j in 2:length.mf)
     }#if(length.mf2>1)
