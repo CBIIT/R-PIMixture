@@ -1228,7 +1228,12 @@ ipw.lc.semipara<-function(samp.data,data,fml,fml2, n.beta, n.gamma, design.mat, 
   if (length.mf>1){
     for(j in 2:length.mf){
       if(is.factor(mf[,j])){
-        colnames(design.mat)<-gsub(colnames(mf)[j],paste0(colnames(mf)[j],"="),colnames(design.mat),fixed=T)
+        name1<-colnames(mf)[j]
+        name2<-gsub("as.factor","",name1)
+        name3<-gsub("[()]","",name2)
+        
+        colnames(design.mat)<-gsub(name1,paste0(name3,"="),colnames(design.mat),fixed=T)
+        remove(name1,name2,name3)
       }
     } #for(j in 2:length.mf)
   }#if (length.mf>1)
@@ -1246,7 +1251,12 @@ ipw.lc.semipara<-function(samp.data,data,fml,fml2, n.beta, n.gamma, design.mat, 
     if (length.mf2>1){
       for(j in 2:length.mf2){
         if(is.factor(mf2[,j])){
-          colnames(xmat)<-gsub(colnames(mf2)[j],paste0(colnames(mf2)[j],"="),colnames(xmat),fixed=T)
+          name1<-colnames(mf2)[j]
+          name2<-gsub("as.factor","",name1)
+          name3<-gsub("[()]","",name2)
+          
+          colnames(xmat)<-gsub(name1,paste0(name3,"="),colnames(xmat),fixed=T)
+          remove(name1,name2,name3)
         }
       } #for(j in 2:length.mf)
     }#if(length.mf2>1)
@@ -3656,13 +3666,16 @@ PIMixture<-function(p.model,i.model,data,model="semi-parametric",reg.initials=NU
   design.mat <- model.matrix(attr(mf, "terms"), data=mf)
   n.beta<-ncol(design.mat)
 
-  ## newly labeling #04/22/2019
-  
   length.mf<-length(colnames(mf))
   if (length.mf>1){
     for(j in 2:length.mf){
       if(is.factor(mf[,j])){
-          colnames(design.mat)<-gsub(colnames(mf)[j],paste0(colnames(mf)[j],"="),colnames(design.mat),fixed=T)
+        name1<-colnames(mf)[j]
+        name2<-gsub("as.factor","",name1)
+        name3<-gsub("[()]","",name2)
+        
+          colnames(design.mat)<-gsub(name1,paste0(name3,"="),colnames(design.mat),fixed=T)
+          remove(name1,name2,name3)
         }
       }#for(j in 2:length.mf)
   }#if (length.mf>1)
@@ -3683,7 +3696,12 @@ PIMixture<-function(p.model,i.model,data,model="semi-parametric",reg.initials=NU
     if (length.mf2>1){
         for(j in 2:length.mf2){
           if(is.factor(mf2[,j])){
-            colnames(xmat)<-gsub(colnames(mf2)[j],paste0(colnames(mf2)[j],"="),colnames(xmat),fixed=T)
+            name1<-colnames(mf2)[j]
+            name2<-gsub("as.factor","",name1)
+            name3<-gsub("[()]","",name2)
+            
+            colnames(xmat)<-gsub(name1,paste0(name3,"="),colnames(xmat),fixed=T)
+            remove(name1,name2,name3)
           }
         } #for(j in 2:length.mf)
     }#if(length.mf2>1)
